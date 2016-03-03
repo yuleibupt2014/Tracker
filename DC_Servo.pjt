@@ -1,0 +1,91 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\Users\yuleibupt2014\Desktop\118\Yihua\trunk\DC_Servo\"
+ProjectType=Executable
+CPUFamily=TMS320C28XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Flash"
+Config="Release"
+
+[Source Files]
+Source="Source\astronomy.c"
+Source="Source\cordic-32bit.c"
+Source="Source\Driver_EEPROM.c"
+Source="Source\Driver_I2C.c"
+Source="Source\DSP280x_Adc.c"
+Source="Source\DSP280x_CodeStartBranch.asm"
+Source="Source\DSP280x_CpuTimers.c"
+Source="Source\DSP280x_DefaultIsr.c"
+Source="Source\DSP280x_EPwm.c"
+Source="Source\DSP280x_EQep.c"
+Source="Source\DSP280x_GlobalVariableDefs.c"
+Source="Source\DSP280x_Gpio.c"
+Source="Source\DSP280x_I2C.c"
+Source="Source\DSP280x_PieCtrl.c"
+Source="Source\DSP280x_PieVect.c"
+Source="Source\DSP280x_Sci.c"
+Source="Source\DSP280x_SysCtrl.c"
+Source="Source\DSP280x_usDelay.asm"
+Source="Source\gps.c"
+Source="Source\GPS_API.c"
+Source="Source\main.c"
+Source="Source\MotorCtrl.c"
+Source="Source\MPU_9150.c"
+Source="Source\pid_reg.c"
+Source="Source\yhmath.c"
+Source="Cmd\2808_RAM_lnk.cmd"
+Source="Cmd\DSP280x_Headers_nonBIOS.cmd"
+Source="Cmd\F2808_FLASH.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -pdr -pdsw225 -fr"$(Proj_dir)\Debug" -i"..\Include" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28
+
+["Compiler" Settings: "Flash"]
+Options=-g -pdr -pdsw225 -fr"$(Proj_dir)\Flash" -i"..\Include" -d"_DEBUG" -d"LARGE_MODEL" -d"FLASH" -ml -v28
+
+["Compiler" Settings: "Release"]
+Options=-pdsw225 -o3 -fr"$(Proj_dir)\Release" -d"LARGE_MODEL" -ml -v28
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\DC_Servo.map" -o".\Debug\DC_Servo.out" -stack0x380 -w -x -i"..\Cmd" -l"rts2800_ml.lib"
+
+["Linker" Settings: "Flash"]
+Options=-c -m".\Flash\DC_Servo.map" -o".\Flash\DC_Servo.out" -stack0x380 -w -x -i"..\Cmd" -l"rts2800_ml.lib"
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\DC_Servo.map" -o".\Release\DC_Servo.out" -w -x
+
+["Cmd\2808_RAM_lnk.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["Cmd\2808_RAM_lnk.cmd" Settings: "Flash"]
+ExcludeFromBuild=true
+LinkOrder=1
+
+["Cmd\2808_RAM_lnk.cmd" Settings: "Release"]
+LinkOrder=1
+
+["Cmd\DSP280x_Headers_nonBIOS.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["Cmd\DSP280x_Headers_nonBIOS.cmd" Settings: "Flash"]
+LinkOrder=1
+
+["Cmd\DSP280x_Headers_nonBIOS.cmd" Settings: "Release"]
+LinkOrder=1
+
+["Cmd\F2808_FLASH.cmd" Settings: "Debug"]
+ExcludeFromBuild=true
+LinkOrder=1
+
+["Cmd\F2808_FLASH.cmd" Settings: "Flash"]
+LinkOrder=1
+
+["Cmd\F2808_FLASH.cmd" Settings: "Release"]
+LinkOrder=1
+
